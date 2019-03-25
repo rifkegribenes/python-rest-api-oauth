@@ -13,6 +13,7 @@ Flask-OAuthlib = "*"
 python-dotenv = "*"
 marshmallow-sqlalchemy = "*"
 marshmallow = "==3.0.0b12"
+oauthlib = "*"
 
 [dev-packages]
 
