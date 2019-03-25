@@ -19,6 +19,14 @@ class GithubAuthorize(Resource):
     def get(cls):
         resp = github.authorized_response()
 
+        if resp is None or resp.get('access_token') is None:
+            error_response = {
+                "error": request.args["error"],
+                "error_description": request.args["error_description"]
+            }
+            return error_response
+
+
         g.access_token = resp['access_token']
         github_user = github.get('user')  # this uses the access_token from the tokengetter function
         github_username = github_user.data['login']
